@@ -128,9 +128,9 @@ module "red5pro" {
   https_ssl_certificate = "none" # none - do not use HTTPS/SSL certificate, letsencrypt - create new Let's Encrypt HTTPS/SSL certificate, imported - use existing HTTPS/SSL certificate
 
   # Example of Let's Encrypt HTTPS/SSL certificate configuration - please uncomment and provide your domain name and email
-  # https_ssl_certificate             = "letsencrypt"
-  # https_ssl_certificate_domain_name = "red5pro.example.com" # Replace with your domain name
-  # https_ssl_certificate_email       = "email@example.com"   # Replace with your email
+  https_ssl_certificate             = "letsencrypt"
+  https_ssl_certificate_domain_name = "red5pro.example.com" # Replace with your domain name
+  https_ssl_certificate_email       = "email@example.com"   # Replace with your email
 
   # Example of imported HTTPS/SSL certificate configuration - please uncomment and provide your domain name, certificate and key paths
   # https_ssl_certificate             = "imported"

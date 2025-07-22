@@ -1,7 +1,7 @@
 variable "name" {
   description = "Name to be used on all the resources as identifier"
   type        = string
-  default     = ""
+  default     = "red5pro-standalone"
   validation {
     condition     = length(var.name) > 0
     error_message = "The name value must be a valid! Example: example-name"
@@ -10,7 +10,7 @@ variable "name" {
 variable "type" {
   description = "Type of deployment: standalone, cluster, autoscale"
   type        = string
-  default     = ""
+  default     = "standalone"
   validation {
     condition     = var.type == "standalone" || var.type == "cluster" || var.type == "autoscale"
     error_message = "The type value must be a valid! Example: standalone, cluster, autoscale"
@@ -19,18 +19,22 @@ variable "type" {
 variable "path_to_red5pro_build" {
   description = "Path to the Red5 Pro build zip file, absolute path or relative path. https://account.red5.net/downloads. Example: /home/ubuntu/terraform-aws-red5pro/red5pro-server-0.0.0.b0-release.zip"
   type        = string
-  default     = ""
+  default     = "/Users/ponlawatchatkaew/Documents/Terraform/red5pro-server-0.0.0.b0-release.zip"
 }
 variable "aws_region" {
   description = "AWS region to deploy the resources"
-  default     = ""
+  type        = string
+  default     = "" 
+  # Use CLI or environment variable to set the region 
 }
 variable "aws_access_key" {
   description = "AWS access key"
+  type        = string
   default     = ""
 }
 variable "aws_secret_key" {
   description = "AWS secret key"
+  type        = string
   default     = ""
 }
 
@@ -280,7 +284,7 @@ variable "kafka_standalone_instance_arhive_url" {
 variable "https_ssl_certificate" {
   description = "Enable SSL (HTTPS) on the Standalone Red5 Pro server,  Stream Manager 2.0 server or Stream Manager 2.0 Load Balancer"
   type        = string
-  default     = "none"
+  default     = "letsencrypt"
   validation {
     condition     = var.https_ssl_certificate == "none" || var.https_ssl_certificate == "letsencrypt" || var.https_ssl_certificate == "imported" || var.https_ssl_certificate == "existing"
     error_message = "The https_ssl_certificate value must be a valid! Example: none, letsencrypt, imported"
@@ -289,12 +293,12 @@ variable "https_ssl_certificate" {
 variable "https_ssl_certificate_domain_name" {
   description = "Domain name for SSL certificate (letsencrypt/imported/existing)"
   type        = string
-  default     = ""
+  default     = "red5pro.prydetv-th.live"
 }
 variable "https_ssl_certificate_email" {
   description = "Email for SSL certificate (letsencrypt)"
   type        = string
-  default     = ""
+  default     = "developer@pryde-tv.com"
 }
 variable "https_ssl_certificate_cert_path" {
   description = "Path to public certificate file (imported)"
@@ -355,7 +359,7 @@ variable "stream_manager_auth_password" {
 variable "red5pro_license_key" {
   description = "Red5 Pro license key (https://www.red5.net/docs/installation/installation/license-key/)"
   type        = string
-  default     = ""
+  default     = "6NEN-V4W6-1NT7-H6KM"
 }
 variable "red5pro_api_enable" {
   description = "Red5 Pro Server API enable/disable (https://www.red5.net/docs/development/api/overview/)"
@@ -365,7 +369,7 @@ variable "red5pro_api_enable" {
 variable "red5pro_api_key" {
   description = "Red5 Pro standalone server API key"
   type        = string
-  default     = ""
+  default     = "prydetv-th_red5pro"
 }
 
 # Red5 Pro Node image configuration
